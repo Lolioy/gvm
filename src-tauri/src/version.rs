@@ -19,14 +19,14 @@ pub fn set_current_version(version: &str) -> Result<()> {
     Ok(())
 }
 
-pub fn get_current_version() -> Result<String> {
+pub fn get_current_version() -> Result<Option<String>> {
     let filepath = PathBuf::from(CURRENT_VERSION_PATH);
-    if !filepath.exists() { return Ok("".to_string()); }
+    if !filepath.exists() { return Ok(None); }
 
     let mut file = fs::File::open(filepath)?;
     let mut version = String::new();
     file.read_to_string(&mut version)?;
-    Ok(version)
+    Ok(Some(version))
 }
 
 pub fn get_local_versions() -> Vec<String> {

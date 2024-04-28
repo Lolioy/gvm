@@ -10,7 +10,7 @@ fn main() {
     tauri::Builder::default()
         .system_tray(SystemTray::new())
         .setup(|app| {
-            tray::setup_menu(app)?;
+            tray::setup(app)?;
             Ok(())
         })
         .on_system_tray_event(tray::on_menu_event)
