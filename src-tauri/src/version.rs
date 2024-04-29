@@ -5,9 +5,6 @@ use std::path::PathBuf;
 use anyhow::Result;
 
 pub const CURRENT_VERSION_PATH: &str = ".current_version";
-pub const VERSION_TAG: &str = "_version_";
-pub const LOCAL_VERSION_PREFIX: &str = "local";
-pub const MORE_VERSION_PREFIX: &str = "more";
 
 pub fn set_current_version(version: &str) -> Result<()> {
     let mut file = fs::File::options()
@@ -29,15 +26,10 @@ pub fn get_current_version() -> Result<Option<String>> {
     Ok(Some(version))
 }
 
-pub fn get_local_versions() -> Vec<String> {
-    vec![
-        "go1.21".to_string(),
-    ]
-}
-
-pub fn get_more_versions() -> Vec<String> {
+pub fn get_version_list() -> Vec<String> {
     vec![
         "go1.21".to_string(),
         "go1.20".to_string(),
+        "go1.19".to_string(),
     ]
 }
